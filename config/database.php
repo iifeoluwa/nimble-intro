@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 return [
 
@@ -20,9 +20,9 @@ return [
 
     'mysql' => [
         'host'      => 'localhost',
-        'database'  => 'homestead',
+        'database'  => 'nimble_intro',
         'username'  => 'root',
-        'password'  => 'secret',
+        'password'  => '',
         'charset'   => 'utf8',
         'collation' => 'utf8_unicode_ci',
         'prefix'    => '',
