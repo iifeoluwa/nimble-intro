@@ -7,7 +7,6 @@ use App\Model\Entry;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 class HomeController extends Controller {
-
     /**
      * This is the index page.
      *
@@ -16,7 +15,7 @@ class HomeController extends Controller {
     public function index()
     {
         $entry = Entry::select('name', 'comment')->get();
-        // Cast object to array
+    
         $data['data'] = $entry;
 
         return view('index', $data);
