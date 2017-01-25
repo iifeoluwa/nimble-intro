@@ -4,12 +4,12 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class User extends Eloquent {
+class Entry extends Eloquent {
 
     /**
      * Name of the table.
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'entries';
 }

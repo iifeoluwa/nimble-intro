@@ -27,12 +27,13 @@ class CreateUserEntryTable extends AbstractMigration
      */
     public function change()
     {
+        //tell the table object we’d like to create a table named entries
         $table = $this->table('entries');
+        //add the needed columns to the table we instantiated earlier
         $table->addColumn('name', 'string', array('limit' => 20))
               ->addColumn('comment', 'text')
-              ->addColumn('created', 'datetime')
-              ->addTimestamps(null, 'created_at')
-              ->addIndex(array('username', 'email'), array('unique' => true))
+              ->addColumn('created_at', 'datetime')
+              ->addColumn('updated_at', 'datetime')
               ->create();
     }
 }
