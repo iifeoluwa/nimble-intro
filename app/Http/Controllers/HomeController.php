@@ -15,25 +15,38 @@ class HomeController extends Controller {
      */
     public function index()
     {
-        $data = Entry::all();
+        $entry = Entry::select('name', 'comment')->get();
+        // Cast object to array
+        $data['data'] = $entry;
 
-        var_dump($data);
-        return view('welcome', [
-            'sitename' => config('app.name')
-        ]);
+        return view('index', $data);
     }
 
     public function postComment()
     {
-        $name = trim($_GET['name']);
-        $comment = trim($_GET['comment']);
 
-        $entry = new Entry;
-        $entry->name = $name;
-        $entry->comment =  $comment;
-        $entry->save();
+        if (!empty($_GET['name']) && !empty($_GET['comment'])) {
+            
+            //Get the submitted form data and store them
+            $name = trim($_GET['name']);
+            $comment = trim($_GET['comment']);
 
-        header('Location: /');
-        exit();
+            // Create an instance of the Entry Model
+            $entry = new Entry;
+
+            // Save the form data to the database.
+            $entry->name = $name;
+            $entry->comment =  $comment;
+            $entry->save();
+
+            // Redirect user to homepage
+            header('Location: /');
+            exit();
+        }else{
+            // Redirect user to homepage
+            header('Location: /');
+            exit();
+        }
+
     }
 }
